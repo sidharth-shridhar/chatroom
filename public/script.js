@@ -5,9 +5,9 @@ const messageForm = document.getElementById('send-container')
 const messageInput = document.getElementById('message-input')
 const likeButton = document.getElementById('like-button')
 const userbrand = document.getElementById('user')
-
+let user= ""
 if (messageForm != null) {
-  const user = prompt('What is your name?')
+  user = prompt('What is your name?')
   // appendMessage('')
   userbrand.innerText = `(joined in as ${user})`
   socket.emit('new-user', roomName, user)
@@ -67,12 +67,12 @@ function appendMessage(name, message, canLike) {
     likeButton.innerHTML = '<i class="far fa-heart"></i> Like'
     messageElement.append(likeButton)
     likeButton.addEventListener('click', e => {
-      likeButton.innerHTML = '<i class="fas fa-heart"></i> Liked'
+      likeButton.innerHTML = '<i class="fas fa-heart"></i> Like'
       likeButton.disabled = true
       likeButton.style.color = "maroon"
       e.preventDefault()
       const messageText = message
-      appendMessage(name, `You liked ${name}'s message: "${messageText}"`, false)
+      appendMessage(user, `You liked ${name}'s message: "${messageText}"`, false)
       socket.emit('like-notification-message', roomName, message, name)
     })
   }
