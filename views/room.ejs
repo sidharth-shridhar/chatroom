@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Chat App</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script>
+    const roomName = "<%= roomName %>"
+  </script>
+  <script src="https://kit.fontawesome.com/07ee3e78bc.js" crossorigin="anonymous"></script>
+  <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+  <script defer src="script.js"></script>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+      justify-content: center;
+      overflow: hidden;
+    }
+    #like-button {
+      border: 0;
+      background-color: transparent; 
+      color: gray;
+      display: block;
+      font-size: 14px;
+      font-weight:300;
+    }
+
+    #like-button:hover {
+      color: maroon;
+    }
+    #like-button:focus {
+      outline: 0;
+    }
+    #message-container {
+      max-height: 500px;
+      overflow-y: scroll;
+    }
+    #message-container div {
+      background-color: #FFF;
+      padding: 5px;
+    }
+
+    #message-container div:nth-child(2n) {
+      background-color: #FFF;
+    }
+    #test {
+      position: absolute;
+      padding-bottom: 30px;    
+      width: 100%;
+      bottom: 0;
+    }
+    #user {
+      font-style: italic;
+      color: rgb(109, 109, 109);
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+      <img src="logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      Chit-Chat(<span style="color: #ea4333;">#<%= roomName %></span>)
+    </a>
+  </nav>
+  
+
+  <div class="container-fluid mt-3">
+          <p>chat-room: 
+            <span style="font-weight: bold">#<%= roomName %></span>
+            <span id ="user"></span>
+          </p>
+          <hr>
+          <div id="message-container"></div>
+          <div id="test">
+            <form id="send-container">
+                <div class="form-row">
+                  <div class="col-11">
+                      <input type="text" id="message-input" class="form-control mb-2 mr-sm-2" placeholder="Type a message" required>
+                  </div>
+                  <div class="col-1">
+                    <button type="submit" id="send-button"  class="btn btn-primary mb-2">Send</button>
+                  </div>
+                </div>
+            </form>
+          </div>
+  </div>
+  
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</html>
